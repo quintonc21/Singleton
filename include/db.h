@@ -39,13 +39,13 @@ class Database{
         if (!instance) 
             instance = new Database(database, username, password);
         else {
-            if (instance->db == database & instance->username == username & instance->password == password) {
+            if ((instance->db == database) && (instance->username == username) && (instance->password == password)) {
                 return instance;
             }
             else 
                 throw std::runtime_error("invalid database name, username, or password");
         }
-
+        return instance;
     }
     
     //"connect" that sets "connected" to true (return void)
