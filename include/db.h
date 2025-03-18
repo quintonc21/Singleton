@@ -73,6 +73,7 @@ class Database{
         if(ptr == nullptr) {
             throw std::bad_alloc();
         }
+        return ptr;
     }
     //overload the delete operator that deallocates memory and prints "overloaded delete " (cout is okay in this). std::cout << "overloaded delete ";
     //ToDo
