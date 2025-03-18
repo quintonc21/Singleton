@@ -42,8 +42,9 @@ class Database{
             if ((instance->db == database) && (instance->username == username) && (instance->password == password)) {
                 return instance;
             }
-            else 
+            else {
                 throw std::runtime_error("invalid database name, username, or password");
+            }
         }
         return instance;
     }
@@ -69,8 +70,9 @@ class Database{
     void *operator new(size_t size) {
         void* ptr = malloc(size);
         std::cout << "overloaded new ";
-        if(ptr == nullptr)
+        if(ptr == nullptr) {
             throw std::bad_alloc();
+        }
     }
     //overload the delete operator that deallocates memory and prints "overloaded delete " (cout is okay in this). std::cout << "overloaded delete ";
     //ToDo
