@@ -8,7 +8,8 @@ class Database{
     
     //constructor that helps creating instance of db(e.g. sales.db) accepts name of the database, username, password. 
     //ToDo
-    Database(const std::string &database, const std::string &username, const std::string &password);
+    Database(const std::string &database, const std::string &username, const std::string &password): 
+        db(database), username(username), password(password){};
     //destructor that disconnects the connection if connected.
     //ToDo
     ~Database() {
