@@ -18,23 +18,7 @@ class Database{
             connected = false;
     }
 
-    //copy construct
-    Database(const Database& database)
-    {
-        throw std::runtime_error("Copy or move operations are not allowed");
-    }
-
-    Database& operator=(const Database database) {
-        throw std::runtime_error("Copy or move operations are not allowed");
-    }
-
-    Database(Database &&source) {
-        throw std::runtime_error("Copy or move operations are not allowed");
-    }
-
-    Database& operator=(Database &&source) {
-        throw std::runtime_error("Copy or move operations are not allowed");
-    }
+    
 
     public:
     time_t last_activity;
@@ -125,6 +109,26 @@ class Database{
     }
     //The static "resetInstance" as defined below.
     static void resetInstance();
+
+
+
+    //copy construct
+    Database(const Database& database)
+    {
+        throw std::runtime_error("Copy or move operations are not allowed");
+    }
+
+    Database& operator=(const Database database) {
+        throw std::runtime_error("Copy or move operations are not allowed");
+    }
+
+    Database(Database &&source) {
+        throw std::runtime_error("Copy or move operations are not allowed");
+    }
+
+    Database& operator=(Database &&source) {
+        throw std::runtime_error("Copy or move operations are not allowed");
+    }
 
     // Checks if the connection has been inactive for longer than TIMEOUT seconds
     // Returns true if the timeout threshold has been exceeded, false otherwise
