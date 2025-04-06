@@ -11,16 +11,17 @@ class Database{
     //ToDo
     Database(const std::string &database, const std::string &username, const std::string &password): 
         db(database), username(username), password(password){};
+    
+
+    
+
+    public:
     //destructor that disconnects the connection if connected.
     //ToDo
     ~Database() {
         if(connected)
             connected = false;
     }
-
-    
-
-    public:
     time_t last_activity;
     static const int TIMEOUT{5};
 
