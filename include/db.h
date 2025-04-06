@@ -134,7 +134,7 @@ class Database{
     // Checks if the connection has been inactive for longer than TIMEOUT seconds
     // Returns true if the timeout threshold has been exceeded, false otherwise
     bool isTimeout() {
-        if(TIMEOUT < last_activity) {
+        if(TIMEOUT < (std::time(0) - last_activity)) {
             return true;
         }
         return false;
