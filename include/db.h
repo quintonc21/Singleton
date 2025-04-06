@@ -119,7 +119,7 @@ class Database{
         throw std::runtime_error("Copy or move operations are not allowed");
     }
 
-    Database& operator=(const Database database) {
+    Database& operator=(const Database& database) {
         throw std::runtime_error("Copy or move operations are not allowed");
     }
 
