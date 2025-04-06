@@ -1,6 +1,7 @@
 #include <stdexcept>
 #include <string>
 #include <iostream>
+#include <ctime>
 
 class Database{
 
@@ -16,7 +17,29 @@ class Database{
         if(connected)
             connected = false;
     }
+
+    //copy construct
+    Database(const Database& database)
+    {
+        throw std::runtime_error("Copy or move operations are not allowed");
+    }
+
+    Database& operator=(const Database database) {
+        throw std::runtime_error("Copy or move operations are not allowed");
+    }
+
+    Database(Database &&source) {
+        throw std::runtime_error("Copy or move operations are not allowed");
+    }
+
+    Database& operator=(Database &&source) {
+        throw std::runtime_error("Copy or move operations are not allowed");
+    }
+
     public:
+    time_t last_activity;
+    static const int TIMEOUT{5};
+
     //member variable "db" is of string type
     //ToDo
     std::string db;
@@ -102,4 +125,23 @@ class Database{
     }
     //The static "resetInstance" as defined below.
     static void resetInstance();
+
+    // Checks if the connection has been inactive for longer than TIMEOUT seconds
+    // Returns true if the timeout threshold has been exceeded, false otherwise
+    bool isTimeout() {
+        if(TIMEOUT < last_activity) {
+            return true;
+        }
+        return false;
+    }
+
+
+    // Updates the last_activity timestamp to the current time
+    // Should be called whenever there is interaction with the database to reset the timeout
+    void refreshConnection() {
+        last_activity = std::time(nullptr);
+    }
+
+
+
 };
